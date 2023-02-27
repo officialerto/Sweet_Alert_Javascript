@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+<script src="~/Scripts/jquery-3.6.3.min.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#btnAlertMessage").click(function () {
+            // ------------- 1 -------------
+            //alert("Alert Message");
+            // ------------- 2 -------------
+            //swal("Hereis the Alert Message");
+            // ------------- 3 -------------
+            //swal({
+            //    title: "Alert Message Title",
+            //    text: "Here is the alert message information.",
+            //    type: 'info',
+            //    showCancelButtonClass: "btn-primary",
+            //    confirmButtonText: 'OK'
+            //});
+            // ------------- 4 -------------
+            swal({
+                title: "Confirmation?",
+                text: "Are You Sure You Want to Delete Record?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: "Yes, Please DELETE IT!",
+                confirmButtonClass: "btn-danger",
+                cancelButtonText: "No, Please DO NOT DELETE!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        swal("Deleted!", "Data has been SUCCESSFULLY DELETED!", "success");
+                    }
+                    else {
+                        swal("Cancelled!", "Your data is safe now!", "error");
+                    }
+                });
+        });
+
+    });
+
+
+</script>
+
+<input type="button" name="alertMessage" value="Alert Message" id="btnAlertMessage" />
